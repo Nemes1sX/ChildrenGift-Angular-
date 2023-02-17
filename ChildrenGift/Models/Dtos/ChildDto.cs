@@ -2,7 +2,7 @@
 
 namespace ChildrenGift.Models.Dtos
 {
-    public class ChildDto
+    public class ChildDto : BaseDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
