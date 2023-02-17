@@ -21,7 +21,7 @@ namespace ChildrenGift.DatContext
             var gift = Builder<Gift>.CreateListOfSize(250)
                 .All()
                 .With(m => m.Name = Faker.Lorem.GetFirstWord())
-                .With(m => m.GiftId = rnd.Next(1, 100))
+                .With(m => m.ChildId = rnd.Next(1, 100))
                 .Build();
 
             modelBuilder.Entity<Gift>().HasData(gift);

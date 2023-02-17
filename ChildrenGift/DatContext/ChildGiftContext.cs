@@ -12,6 +12,7 @@ namespace ChildrenGift.DatContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            ChildrenGiftSeeding.SeedData(modelBuilder);
         }
 
         public DbSet<Child> Children { get; set; }
