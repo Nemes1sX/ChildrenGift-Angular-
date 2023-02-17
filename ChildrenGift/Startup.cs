@@ -1,5 +1,7 @@
+using ChildrenGift.DatContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,10 @@ namespace ChildrenGift
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContextPool<ChildGiftContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("ChildGiftDatabase"));
+            });
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
