@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ChildrenGift.Repositories;
 
 namespace ChildrenGift
 {
@@ -28,6 +29,7 @@ namespace ChildrenGift
                 options.UseSqlServer(Configuration.GetConnectionString("ChildGiftDatabase"));
             });
             services.AddAutoMapper(typeof(Program));
+            services.AddScoped<IChildrenRepository, ChildrenRepository>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

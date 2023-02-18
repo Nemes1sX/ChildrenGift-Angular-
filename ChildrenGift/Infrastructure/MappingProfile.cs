@@ -9,6 +9,7 @@ namespace ChildrenGift.Infrastructure
         public MappingProfile()
         {
             CreateMap<Child, ChildDto>();
+            CreateMap<Gift, GiftDto>();
         }
     }
 }

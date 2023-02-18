@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using ChildrenGift.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,12 +10,21 @@ namespace ChildrenGift.Controllers
     [ApiController]
     public class ChildrenController : ControllerBase
     {
+        private readonly IChildrenRepository _childrenRepository;
+
+        public ChildrenController(IChildrenRepository childrenRepository)
+        {
+            _childrenRepository = childrenRepository;
+        }
+
         // GET: api/<ValuesController>
         [HttpGet]
         [Route("index")]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var childernList = await _childrenRepository.GetChildren(); 
+
+            return Ok(childernList);
         }
 
         // GET api/<ValuesController>/5

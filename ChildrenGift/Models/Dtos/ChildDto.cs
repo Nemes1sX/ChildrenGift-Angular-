@@ -6,6 +6,6 @@ namespace ChildrenGift.Models.Dtos
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<GiftDto> Gifts { get; set; }
+        public ICollection<GiftDto> Gifts { get; set; }
     }
 }
