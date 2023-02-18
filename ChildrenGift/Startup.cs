@@ -27,6 +27,7 @@ namespace ChildrenGift
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ChildGiftDatabase"));
             });
+            services.AddAutoMapper(typeof(Program));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
