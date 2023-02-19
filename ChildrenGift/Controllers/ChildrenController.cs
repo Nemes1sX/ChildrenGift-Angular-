@@ -1,4 +1,6 @@
-﻿using ChildrenGift.Repositories;
+﻿using ChildrenGift.Models.Dtos;
+using ChildrenGift.Models.FormRequest;
+using ChildrenGift.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -17,39 +19,69 @@ namespace ChildrenGift.Controllers
             _childrenRepository = childrenRepository;
         }
 
-        // GET: api/<ValuesController>
+        // GET: api/<ChildrenController>/index
         [HttpGet]
         [Route("index")]
-        public async Task<ActionResult> Get()
+        public async Task<ActionResult> Index()
         {
             var childernList = await _childrenRepository.GetChildren(); 
 
             return Ok(childernList);
         }
 
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/<ValuesController>/read?id=5
+        [HttpGet]
+        [Route("read")]
+        public async Task<ActionResult> Show(int id)
         {
-            return "value";
+            var child = await _childrenRepository.GetChild(id);
+
+            if (child == null)
+            {
+                return NotFound(new { message = "Child not exist" });
+            }
+
+            return Ok(child);
         }
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("post")]
+        public async Task<ActionResult> Post([FromBody] ChildFormRequest childFormRequest)
         {
+            var child = await _childrenRepository.AddChild(childFormRequest);
+
+            return Ok(child);
         }
 
-        // PUT api/<ValuesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT api/<ValuesController>/update?id=5
+        [HttpPut]
+        [Route("update")]
+        public async Task<ActionResult> Put(int id, [FromBody] ChildFormRequest childFormRequest)
         {
+            var child = await _childrenRepository.UpdateChild(childFormRequest, id);
+
+            if (child == null)
+            {
+                return NotFound(new { message = "Child not exist" });
+            }
+
+            return Ok(child);
         }
 
-        // DELETE api/<ValuesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // DELETE api/<ValuesController>/delete?id=5
+        [HttpDelete]
+        [Route("delete")]
+        public async Task<ActionResult> Delete(int id)
         {
+            var deletedChild = await _childrenRepository.DeleteChild(id);
+
+            if (deletedChild == 0)
+            {
+                return NotFound(new { message = "Child not exist" });
+            }
+
+            return Ok(new { message = $"Child is deleted successfully" });
         }
     }
 }

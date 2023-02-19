@@ -73,6 +73,7 @@ namespace ChildrenGift.Repositories
             }
 
             _context.Children.Remove(child);
+            await _context.SaveChangesAsync();
 
             return id;
         }

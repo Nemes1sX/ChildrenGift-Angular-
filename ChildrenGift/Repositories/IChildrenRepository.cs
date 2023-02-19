@@ -11,6 +11,6 @@ namespace ChildrenGift.Repositories
         Task<ChildDto> GetChild(int id);
         Task<ChildDto> AddChild(ChildFormRequest childFormRequest);
         Task<ChildDto> UpdateChild(ChildFormRequest childFormRequest, int id);
-        Task DeleteChild(int id);
+        Task<int> DeleteChild(int id);
     }
 }
