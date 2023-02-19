@@ -1,0 +1,31 @@
+﻿<p *ngIf="!childrenList$ | async"><em>Loading...</em></p>
+
+
+<div *ngIf="childrenList$.length > 0 | async; then rexist else noexist"></div>
+
+<ng-template #exist>
+    <table class='table' *ngIf="childrenList$.length > 0 | async">
+
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of childrenList$ | async">
+                <td>{{ obj.firstName }}</td>
+                <td>{{ obj.lastName }}</td>
+                <!--<td>
+                    <a [routerLink]="['/company/edit/', obj.id]">Edit</a> |
+                    <a [routerLink]="" (click)="delete(obj.id)">Delete</a>
+                </td>-->
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+<ng-template #noexist><h2>No records.</h2></ng-template>
+<p>
+    <a class="btn btn-success" href="#">Create New</a>
+</p>
