@@ -42,7 +42,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\children\childrenindex.component.ts" />
+    <None Remove="ClientApp\src\app\models\children.ts" />
+    <None Remove="ClientApp\src\app\models\gift.ts" />
+    <None Remove="ClientApp\src\app\services\children.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\children\childrenindex.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\children.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\gift.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\children.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
