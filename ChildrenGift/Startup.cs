@@ -30,6 +30,7 @@ namespace ChildrenGift
             });
             services.AddAutoMapper(typeof(Program));
             services.AddScoped<IChildrenRepository, ChildrenRepository>();
+            services.AddScoped<IGiftRepository, GiftRepository>();  
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

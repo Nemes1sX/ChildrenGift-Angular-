@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ChildrenGift.Models.FormRequest.Rules;
+using System.ComponentModel.DataAnnotations;
 
 namespace ChildrenGift.Models.FormRequest
 {
@@ -6,7 +7,7 @@ namespace ChildrenGift.Models.FormRequest
     {
         [StringLength(255, MinimumLength = 4)]
         public string Name { get; set; }
-        [Required]
+        [Required, ExistingChild]
         public int ChildId { get; set; }
     }
 }

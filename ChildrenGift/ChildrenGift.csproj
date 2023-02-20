@@ -39,6 +39,12 @@
     <Compile Remove="Migrations\20230217223540_InitialChildGift.Designer.cs" />
     <Compile Remove="Migrations\20230217224218_InitialChildGift.cs" />
     <Compile Remove="Migrations\20230217224218_InitialChildGift.Designer.cs" />
+    <Compile Remove="Migrations\20230218123551_InitialCreate.cs" />
+    <Compile Remove="Migrations\20230218123551_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20230220184317_IntialCreate.cs" />
+    <Compile Remove="Migrations\20230220184317_IntialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20230220184344_InitialCreate.cs" />
+    <Compile Remove="Migrations\20230220184344_InitialCreate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,10 +52,6 @@
     <None Remove="ClientApp\src\app\models\children.ts" />
     <None Remove="ClientApp\src\app\models\gift.ts" />
     <None Remove="ClientApp\src\app\services\children.service.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
